@@ -8,24 +8,36 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SignUpActivity extends AppCompatActivity {
     EditText userSignUpName, userSignUpEmail, userPassword, userConfirmPassword;
     Button signUpButton;
+    TextView gotoSignIn;
     Intent open_main_activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Initializing the views -
         setContentView(R.layout.activity_sign_up);
+        //Initializing the views -
         userSignUpName = findViewById(R.id.userSignUpName);
         userSignUpEmail = findViewById(R.id.userSignUpEmail);
         userPassword = findViewById(R.id.userPassword);
         userConfirmPassword = findViewById(R.id.userConfirmPassword);
         signUpButton = findViewById(R.id.signUpButton);
+        gotoSignIn = findViewById(R.id.goToSignIn);
 
         //What happens on clicking the button happens here -
+
+        gotoSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent open_signin_activity = new Intent(SignUpActivity.this,SignInActivity.class);
+                startActivity(open_signin_activity);
+            }
+        });
+
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,6 +48,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.d("User_Login",   userSign_UpName +" " + userSign_UpEmail + " " + user_Password + " " + userConfirmPassword);
                 Toast.makeText(SignUpActivity.this, "Sign Up Success!", Toast.LENGTH_SHORT).show();
                 open_main_activity = new Intent(SignUpActivity.this, MainActivity.class);
+                startActivity(open_main_activity);
             }
         });
     }

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">VaxNote</string>
     <string name="vaxNote">VaxNote</string>
+    <string name="SignInActivity">Sign In</string>
+    <string name="MainActivity">Main Menu</string>
+    <string name="SignUpActivity">Sign Up</string>
 </resources>
