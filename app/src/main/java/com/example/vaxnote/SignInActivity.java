@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import  java.util.concurrent.CompletableFuture;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -57,12 +56,8 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String userLoginEmail = userloginEmail.getText().toString();
                 String userLoginPassword = userloginPassword.getText().toString();
-//                BackgroundWorker backgroundWorker = new BackgroundWorker(SignInActivity.this);
-//                backgroundWorker.execute(userLoginEmail,userLoginPassword);
-                Log.d("User_Login", userLoginEmail + " " + userLoginPassword);
-                Toast.makeText(SignInActivity.this, "Sign In Success!", Toast.LENGTH_SHORT).show();
-                open_main_activity = new Intent(SignInActivity.this, MainActivity.class);
-                startActivity(open_main_activity);
+                UserAuthentication userAuthentication = new UserAuthentication(SignInActivity.this);
+                userAuthentication.AuthenticateUser(userLoginEmail,userLoginPassword);
             }
         });
     }
