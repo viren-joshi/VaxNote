@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SignUpActivity extends AppCompatActivity {
-    EditText userSignUpName, userSignUpEmail, userPassword, userConfirmPassword;
+    EditText usersignUpName, usersignUpEmail, userpassword, userconfirmPassword;
     Button signUpButton;
     TextView gotoSignIn;
     Intent open_main_activity;
@@ -21,10 +21,10 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         //Initializing the views -
-        userSignUpName = findViewById(R.id.userSignUpName);
-        userSignUpEmail = findViewById(R.id.userSignUpEmail);
-        userPassword = findViewById(R.id.userPassword);
-        userConfirmPassword = findViewById(R.id.userConfirmPassword);
+        usersignUpName = findViewById(R.id.userSignUpName);
+        usersignUpEmail = findViewById(R.id.userSignUpEmail);
+        userpassword = findViewById(R.id.userPassword);
+        userconfirmPassword = findViewById(R.id.userConfirmPassword);
         signUpButton = findViewById(R.id.signUpButton);
         gotoSignIn = findViewById(R.id.goToSignIn);
 
@@ -41,14 +41,17 @@ public class SignUpActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userSign_UpName = userSignUpName.getText().toString();
-                String userSign_UpEmail = userSignUpEmail.getText().toString();
-                String user_Password = userPassword.getText().toString();
-                String useConfirm_Password = userConfirmPassword.getText().toString();
-                Log.d("User_Login",   userSign_UpName +" " + userSign_UpEmail + " " + user_Password + " " + userConfirmPassword);
-                Toast.makeText(SignUpActivity.this, "Sign Up Success!", Toast.LENGTH_SHORT).show();
-                open_main_activity = new Intent(SignUpActivity.this, MainActivity.class);
-                startActivity(open_main_activity);
+                String userName = usersignUpName.getText().toString();
+                String userSignUpEmail = usersignUpEmail.getText().toString();
+                String userPassword = userpassword.getText().toString();
+                String userConfirmPassword = userconfirmPassword.getText().toString();
+                if(userPassword.equals(userConfirmPassword)) {
+                    UserAuthentication userAuthentication = new UserAuthentication(SignUpActivity.this);
+                    userAuthentication.AuthenticateUser(userName, userSignUpEmail, userPassword);
+                }
+                else{
+                    Toast.makeText(SignUpActivity.this, "Passwords do not match !", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
