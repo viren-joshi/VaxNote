@@ -57,7 +57,7 @@ public class SignInActivity extends AppCompatActivity {
                 String userLoginPassword = userloginPassword.getText().toString();
 //                 UserAuthentication userAuthentication = new UserAuthentication(SignInActivity.this);
 //                 userAuthentication.AuthenticateUser(userLoginEmail,userLoginPassword);
-                Intent open_main_activity = new Intent(SignInActivty.this, MainActivity.class);
+                Intent open_main_activity = new Intent(SignInActivity.this, MainActivity.class);
                 startActivity(open_main_activity);
             }
         });
