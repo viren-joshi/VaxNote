@@ -15,7 +15,6 @@ public class SignUpActivity extends AppCompatActivity {
     EditText usersignUpName, usersignUpEmail, userpassword, userconfirmPassword;
     Button signUpButton;
     TextView gotoSignIn;
-    Intent open_main_activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +45,10 @@ public class SignUpActivity extends AppCompatActivity {
                 String userPassword = userpassword.getText().toString();
                 String userConfirmPassword = userconfirmPassword.getText().toString();
                 if(userPassword.equals(userConfirmPassword)) {
-                    UserAuthentication userAuthentication = new UserAuthentication(SignUpActivity.this);
-                    userAuthentication.AuthenticateUser(userName, userSignUpEmail, userPassword);
+//                     UserAuthentication userAuthentication = new UserAuthentication(SignUpActivity.this);
+//                     userAuthentication.AuthenticateUser(userName, userSignUpEmail, userPassword);
+                       Intent open_main_activity = new Intent(SignUpActivity.this,MainActivity.class);
+                       startActivity(open_main_activity);
                 }
                 else{
                     Toast.makeText(SignUpActivity.this, "Passwords do not match !", Toast.LENGTH_SHORT).show();
