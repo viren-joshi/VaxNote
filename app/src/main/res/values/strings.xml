@@ -10,4 +10,9 @@
     <string name="sign_in">Sign In</string>
     <string name="don_t_have_an_account_click_here">Don\'t have an account? Click here</string>
     <string name="appicon">AppIcon</string>
+    <string name="already_have_an_accont_tap_here">Already have an accont? Tap here</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="appicon1">appicon</string>
 </resources>
