@@ -4,4 +4,10 @@
     <string name="SignInActivity">Sign In</string>
     <string name="MainActivity">Main Menu</string>
     <string name="SignUpActivity">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="don_t_have_an_account_click_here">Don\'t have an account? Click here</string>
+    <string name="appicon">AppIcon</string>
 </resources>
