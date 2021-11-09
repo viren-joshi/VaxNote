@@ -29,6 +29,7 @@
         android:fontFamily="@font/red_rose_regular"
         android:text="@string/vaxnote"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="65sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
