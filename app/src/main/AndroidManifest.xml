@@ -14,7 +14,7 @@
         android:theme="@style/Theme.VaxNote"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".iconscreen"
+            android:name=".IconScreen"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
         <intent-filter>
