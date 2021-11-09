@@ -3,8 +3,11 @@ package com.example.vaxnote;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,10 +21,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
+import java.util.Set;
 
 public class UserAuthentication extends Thread{
     String result = "";
     Context context;
+   public static final String fileName = "Login";
     UserAuthentication(Context context){
         this.context = context;
     }
@@ -40,6 +46,15 @@ public class UserAuthentication extends Thread{
 
                         /* NOTE : if the condition is changed here change in signin.php also */
                         if (result.equals("Sign In Successful :)")) {
+                            //Adding userLoginEmail to Shared Preferences
+                            SharedPreferences sharedPreferences;
+                            sharedPreferences = context.getSharedPreferences(fileName,Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("Email",userLoginEmail);
+                            editor.putString("Password",userLoginPassword);
+                            editor.apply();
+
+                            //Opening the next activity
                             Intent open_main_activity = new Intent(context, MainActivity.class);
                             ((Activity)context).startActivity(open_main_activity);
                         }
@@ -63,6 +78,15 @@ public class UserAuthentication extends Thread{
 
                         /* NOTE : if the condition is changed here change in signup.php also */
                         if(result.equals("Sign Up Successful :)")) {
+                            //Adding userLoginEmail to Shared Preferences
+                            SharedPreferences sharedPreferences;
+                            sharedPreferences = context.getSharedPreferences(fileName,Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("Email",userSignUpEmail);
+                            editor.putString("Password",userSignUpPassword);
+                            editor.apply();
+
+                            //Opening next activity
                             Intent open_main_activity = new Intent(context, MainActivity.class);
                             ((Activity)context).startActivity(open_main_activity);
                         }
@@ -89,7 +113,7 @@ public class UserAuthentication extends Thread{
             outputStream.close();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.ISO_8859_1));
-            String line = "";
+            String line;
             while((line = bufferedReader.readLine()) != null){
                 result += line;
             }
@@ -119,7 +143,7 @@ public class UserAuthentication extends Thread{
             bufferedWriter.close();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.ISO_8859_1));
-            String line = "";
+            String line;
             while((line = bufferedReader.readLine()) != null){
                 result += line;
             }
