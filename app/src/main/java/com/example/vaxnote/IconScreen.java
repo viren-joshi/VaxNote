@@ -33,15 +33,14 @@ public class IconScreen extends AppCompatActivity {
             if(sharedPreferences.contains("Email")){
                 String savedEmail = sharedPreferences.getString("Email","");
                 String savedPassword = sharedPreferences.getString("Password","");
-                UserAuthentication userAuthentication = new UserAuthentication(IconScreen.this);
+                UserAuthentication userAuthentication = new UserAuthentication(this);
                 userAuthentication.AuthenticateUser(savedEmail,savedPassword);
-                finish();
             }
             else{
                 Intent open_sign_in = new Intent(IconScreen.this,SignInActivity.class);
                 startActivity(open_sign_in);
-                finish();
             }
+            finish();
         },splashscreen);
 
     }
