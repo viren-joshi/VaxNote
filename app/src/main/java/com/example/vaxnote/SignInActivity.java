@@ -38,10 +38,10 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String userLoginEmail = userloginEmail.getText().toString();
                 String userLoginPassword = userloginPassword.getText().toString();
-//                 UserAuthentication userAuthentication = new UserAuthentication(SignInActivity.this);
-//                 userAuthentication.AuthenticateUser(userLoginEmail,userLoginPassword);
-                Intent open_main_activity = new Intent(SignInActivity.this, MainActivity.class);
-                startActivity(open_main_activity);
+                 UserAuthentication userAuthentication = new UserAuthentication(SignInActivity.this);
+                 userAuthentication.AuthenticateUser(userLoginEmail,userLoginPassword);
+//                Intent open_main_activity = new Intent(SignInActivity.this, MainActivity.class);
+//                startActivity(open_main_activity);
             }
         });
     }

@@ -45,7 +45,8 @@ public class UserAuthentication extends Thread{
                         Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
 
                         /* NOTE : if the condition is changed here change in signin.php also */
-                        if (result.equals("Sign In Successful :)")) {
+                        Log.d("Login",result);
+                        if (result.equals("Sign In Successful")) {
                             //Adding userLoginEmail to Shared Preferences
                             SharedPreferences sharedPreferences;
                             sharedPreferences = context.getSharedPreferences(fileName,Context.MODE_PRIVATE);
@@ -77,7 +78,7 @@ public class UserAuthentication extends Thread{
                         Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
 
                         /* NOTE : if the condition is changed here change in signup.php also */
-                        if(result.equals("Sign Up Successful :)")) {
+                        if(result.equals("Sign Up Successful")) {
                             //Adding userLoginEmail to Shared Preferences
                             SharedPreferences sharedPreferences;
                             sharedPreferences = context.getSharedPreferences(fileName,Context.MODE_PRIVATE);
@@ -97,7 +98,7 @@ public class UserAuthentication extends Thread{
     }
 
     private void SignIn(String userLoginEmail, String userLoginPassword){
-        String SignIn_url = "http://10.0.2.2/signin.php";
+        String SignIn_url = "https://vaxnote.000webhostapp.com/signin.php";
         try {
             URL url = new URL(SignIn_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -126,7 +127,7 @@ public class UserAuthentication extends Thread{
         }
     }
     private void SignUp(String userName, String userSignUpEmail, String userSignUpPassword){
-        String SignUp_url = "http://10.0.2.2/signup.php";
+        String SignUp_url = "https://vaxnote.000webhostapp.com/signup.php";
         try {
             URL url = new URL(SignUp_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
