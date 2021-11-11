@@ -15,7 +15,6 @@ public class IconScreen extends AppCompatActivity {
     private static final int splashscreen=5000;
 
     ImageView image;
-    TextView name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +24,6 @@ public class IconScreen extends AppCompatActivity {
 
 
         image = findViewById(R.id.imageView);
-        name = findViewById(R.id.textView);
 
 
         new Handler().postDelayed(() -> {
