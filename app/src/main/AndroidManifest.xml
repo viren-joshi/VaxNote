@@ -14,29 +14,34 @@
         android:theme="@style/Theme.VaxNote"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Vaccineinfo"
+            android:name=".MainPage"
+            android:exported="true"
             android:label="Vaccine Dictionary"
-            android:exported="true" >
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".Vaccineinfo"
+            android:exported="true"
+             />
         <activity
             android:name=".IconScreen"
             android:exported="true"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
-        <!-- <intent-filter> -->
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" /> <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!--  -->
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
         <!-- </intent-filter> -->
         <!-- </activity> -->
         <activity
             android:name=".SignInActivity"
             android:exported="true"
-            android:label="@string/SignInActivity" />
+            android:label="@string/SignInActivity"/>
+
         <activity
             android:name=".SignUpActivity"
             android:exported="false"
@@ -45,7 +50,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/MainActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
     </application>
 
 </manifest>
