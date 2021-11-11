@@ -14,8 +14,9 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="Theme.VaxNote.NoActionBar">
+        <item name="android:colorPrimaryDark">#F4D08F</item>
         <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+        <item name="windowNoTitle">false</item>
     </style>
     <style name="Theme.VaxNote.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.VaxNote.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
