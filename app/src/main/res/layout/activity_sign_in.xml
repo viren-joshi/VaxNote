@@ -12,7 +12,7 @@
         android:id="@+id/greyback"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="116dp"
         android:background="@drawable/graytext"
         android:backgroundTint="#F1F1F1"
         android:layerType="software"
@@ -75,9 +75,9 @@
 
     <Button
         android:id="@+id/signUpButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_width="112dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/buttonround"
         android:text="@string/sign_in"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -87,7 +87,6 @@
         android:translationZ="100dp"
         app:layout_constraintBottom_toTopOf="@+id/goToSignUp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -99,10 +98,9 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/greyback"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.138" />
 
     <TextView
         android:id="@+id/forgotpass"
