@@ -17,4 +17,7 @@
     <string name="already_have_an_account_tap_here">Already have an account? Tap here</string>
     <string name="vaxnote">VaxNote</string>
     <string name="mainicon">mainicon</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
 </resources>
