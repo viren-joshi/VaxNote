@@ -29,16 +29,11 @@ public class IconScreen extends AppCompatActivity {
 
 
         new Handler().postDelayed(() -> {
-            SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
-            if(sharedPreferences.contains("Email")){
-                String savedEmail = sharedPreferences.getString("Email","");
-                String savedPassword = sharedPreferences.getString("Password","");
-                UserAuthentication userAuthentication = new UserAuthentication(this);
-                userAuthentication.AuthenticateUser(savedEmail,savedPassword);
+            if(SharedPrefManager.getInstance(this).isSignedIn()){
+                startActivity(new Intent(this,MainActivity.class));
             }
             else{
-                Intent open_sign_in = new Intent(IconScreen.this,SignInActivity.class);
-                startActivity(open_sign_in);
+                startActivity(new Intent(this,SignInActivity.class));
             }
             finish();
         },splashscreen);
