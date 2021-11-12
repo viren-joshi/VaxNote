@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/buttonround.xml" value="0.22694063926940639" />
         <entry key="app/src/main/res/drawable/edittext.xml" value="0.2300925925925926" />
         <entry key="app/src/main/res/drawable/graytext.xml" value="0.2300925925925926" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2300925925925926" />
         <entry key="app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.22694063926940639" />
         <entry key="app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.22694063926940639" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.25885416666666666" />
@@ -24,6 +25,8 @@
         <entry key="app/src/main/res/layout/activity_vacinfo.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.20324074074074075" />
         <entry key="app/src/main/res/layout/custom_layout.xml" value="0.21574074074074073" />
+        <entry key="app/src/main/res/layout/header.xml" value="0.21574074074074073" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.21574074074074073" />
       </map>
     </option>
   </component>
