@@ -1,4 +1,4 @@
-package com.example.vaxnote;
+package com.example.vaxnote.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.vaxnote.R;
+import com.example.vaxnote.classes.UserAuthentication;
 
 public class SignInActivity extends AppCompatActivity {
     EditText userloginEmail,userloginPassword;

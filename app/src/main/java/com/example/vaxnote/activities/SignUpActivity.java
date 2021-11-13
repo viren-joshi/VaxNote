@@ -1,4 +1,4 @@
-package com.example.vaxnote;
+package com.example.vaxnote.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.vaxnote.R;
+import com.example.vaxnote.classes.UserAuthentication;
 
 public class SignUpActivity extends AppCompatActivity {
     EditText usersignUpName, usersignUpEmail, userpassword, userconfirmPassword;

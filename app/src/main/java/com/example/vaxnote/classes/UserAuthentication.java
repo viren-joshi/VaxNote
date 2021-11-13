@@ -1,4 +1,4 @@
-package com.example.vaxnote;
+package com.example.vaxnote.classes;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
+import com.example.vaxnote.Constants;
+import com.example.vaxnote.activities.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,7 +21,7 @@ public class UserAuthentication{
     String result;
     Context context;
 
-    UserAuthentication(Context context){
+    public UserAuthentication(Context context){
         this.context = context;
     }
 
@@ -32,7 +34,7 @@ public class UserAuthentication{
                         result = jsonObject.getString("message");
                         Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
                         if(Objects.equals(result, "Sign Up Successful")){
-                            Intent intent = new Intent(context,MainActivity.class);
+                            Intent intent = new Intent(context, MainActivity.class);
                             context.startActivity(intent);
                         }
                     } catch (JSONException e) {

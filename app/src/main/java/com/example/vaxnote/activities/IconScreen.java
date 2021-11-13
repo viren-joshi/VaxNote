@@ -1,14 +1,15 @@
-package com.example.vaxnote;
+package com.example.vaxnote.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.example.vaxnote.R;
+import com.example.vaxnote.classes.SharedPrefManager;
 
 public class IconScreen extends AppCompatActivity {
 

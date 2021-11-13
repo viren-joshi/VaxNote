@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layerType="software"
     android:textAlignment="center"
-    tools:context=".SignInActivity">
+    tools:context=".activities.SignInActivity">
 
     <TextView
         android:id="@+id/greyback"

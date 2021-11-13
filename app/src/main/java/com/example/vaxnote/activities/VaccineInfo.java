@@ -1,4 +1,4 @@
-package com.example.vaxnote;
+package com.example.vaxnote.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class Vaccineinfo extends AppCompatActivity {
+import com.example.vaxnote.R;
+
+public class VaccineInfo extends AppCompatActivity {
     ListView listview;
     String arr[] = {"Anthrax", "Chickenpox (Varicella)", "Covid-19", "Diphtheria, tetanus, and " +
             "whooping cough (pertussis) (DTaP)", "Hepatitis A", "Hepatitis B", "Haemophilus influenzae TypeB (Hib)", "HPV vaccine",
@@ -44,7 +46,7 @@ public class Vaccineinfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccineinfo);
         listview= findViewById(R.id.listview);
-        ArrayAdapter ad= new ArrayAdapter(this, android.R.layout.simple_list_item_1,arr);
+        ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arr);
         listview.setAdapter(ad);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -53,7 +55,7 @@ public class Vaccineinfo extends AppCompatActivity {
                 String url = urls[position];
                 Uri uri = Uri.parse(url);
                 Intent intent = new Intent( Intent.ACTION_VIEW, uri );
-                startActivity( intent );
+                startActivity(intent);
             }
         });
     }
