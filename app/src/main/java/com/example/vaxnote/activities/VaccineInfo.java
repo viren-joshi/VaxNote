@@ -44,7 +44,7 @@ public class VaccineInfo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vaccineinfo);
+        setContentView(R.layout.activity_vaccine_info);
         listview= findViewById(R.id.listview);
         ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arr);
         listview.setAdapter(ad);
