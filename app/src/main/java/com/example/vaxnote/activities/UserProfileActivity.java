@@ -9,15 +9,22 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.vaxnote.R;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.zip.Inflater;
 
 public class UserProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -26,6 +33,8 @@ public class UserProfileActivity extends AppCompatActivity implements Navigation
     NavigationView navigationView;
     Toolbar toolbar;
     ImageButton imageButton;
+    ImageButton imageButton1;
+
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -42,6 +51,7 @@ public class UserProfileActivity extends AppCompatActivity implements Navigation
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
         imageButton = findViewById(R.id.left_tap);
+        imageButton1 = findViewById(R.id.right_tap);
 
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(UserProfileActivity.this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -51,9 +61,38 @@ public class UserProfileActivity extends AppCompatActivity implements Navigation
         navigationView.setNavigationItemSelectedListener(this);
 
         //Drawer
-        imageButton.setOnClickListener(v -> UserProfileActivity.drawerLayout.openDrawer(GravityCompat.START));
+        imageButton.setOnClickListener((View v) -> {
+            UserProfileActivity.drawerLayout.openDrawer(GravityCompat.START);
+        });
+
+        imageButton1.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //Creating the instance of PopupMenu
+                PopupMenu popup = new PopupMenu(UserProfileActivity.this, imageButton1);
+                //Inflating the Popup using xml file
+                popup.getMenuInflater().inflate(R.menu.left_menu, popup.getMenu());
+
+                //registering popup with OnMenuItemClickListener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch(item.getItemId()){
+                            case R.id.logout:
+                                Intent intent= new Intent(UserProfileActivity.this,SignInActivity.class);
+                                 startActivity(intent);
+                        }
+
+                        return true;
+                    }
+                });
+
+                popup.show();//showing popup menu
+            }
+        });//closing the setOnClickListener method
 
     }
+
 
     @Override
     public void onBackPressed() {
@@ -68,11 +107,14 @@ public class UserProfileActivity extends AppCompatActivity implements Navigation
     public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
         switch (menuitem.getItemId()) {
             case R.id.vac_dic:
-                Intent intent=new Intent(UserProfileActivity.this, VaccineInfo.class);
+                Intent intent = new Intent(UserProfileActivity.this, VaccineInfo.class);
                 startActivity(intent);
-                 break;
+                break;
         }
 
         return true;
     }
+
 }
+
+
