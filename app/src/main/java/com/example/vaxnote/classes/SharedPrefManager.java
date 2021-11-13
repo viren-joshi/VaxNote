@@ -1,4 +1,4 @@
-package com.example.vaxnote;
+package com.example.vaxnote.classes;
 
 import android.content.Context;
 import android.content.SharedPreferences;

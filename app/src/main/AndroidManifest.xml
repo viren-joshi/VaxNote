@@ -14,7 +14,7 @@
         android:theme="@style/Theme.VaxNote"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".MainPage"
+            android:name=".activities.UserProfileActivity"
             android:label=""
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
@@ -25,12 +25,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Vaccineinfo"
+            android:name=".activities.VaccineInfo"
             android:label="Vaccine Dictionary"
             android:exported="true"
              />
         <activity
-            android:name=".IconScreen"
+            android:name=".activities.IconScreen"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" /> <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -39,16 +39,16 @@
         <!-- </intent-filter> -->
         <!-- </activity> -->
         <activity
-            android:name=".SignInActivity"
+            android:name=".activities.SignInActivity"
             android:exported="true"
             android:label="@string/SignInActivity"/>
 
         <activity
-            android:name=".SignUpActivity"
+            android:name=".activities.SignUpActivity"
             android:exported="false"
             android:label="@string/SignUpActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true"
             android:label="@string/MainActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />

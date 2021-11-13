@@ -1,4 +1,4 @@
-package com.example.vaxnote;
+package com.example.vaxnote.classes;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
