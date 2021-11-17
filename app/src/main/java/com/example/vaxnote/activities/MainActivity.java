@@ -80,6 +80,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent1 = new Intent(MainActivity.this, VacAdvisory.class);
                 startActivity(intent1);
                 break;
+
+            case R.id.set:
+                Intent intent2 = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent2);
+                break;
+
+            case R.id.abt_us:
+                Intent intent3 = new Intent(MainActivity.this, Abt_Activity.class);
+                startActivity(intent3);
+                break;
+
         }
 
         return true;
