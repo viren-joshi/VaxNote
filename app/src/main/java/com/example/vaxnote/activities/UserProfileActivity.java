@@ -26,14 +26,13 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.zip.Inflater;
 
-public class UserProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class UserProfileActivity extends AppCompatActivity {
 
     //Variables
     static DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     ImageButton imageButton;
-    ImageButton imageButton1;
 
 
     @SuppressLint("ResourceAsColor")
@@ -47,30 +46,16 @@ public class UserProfileActivity extends AppCompatActivity implements Navigation
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(this.getResources().getColor(R.color.statusbar_yellow));
 
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
-        imageButton = findViewById(R.id.left_tap);
-        imageButton1 = findViewById(R.id.right_tap);
+        imageButton = findViewById(R.id.right_tap);
 
-        navigationView.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(UserProfileActivity.this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
 
-        navigationView.setNavigationItemSelectedListener(this);
-
-        //Drawer
-        imageButton.setOnClickListener((View v) -> {
-            UserProfileActivity.drawerLayout.openDrawer(GravityCompat.START);
-        });
-
-        imageButton1.setOnClickListener(new View.OnClickListener() {
+        imageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 //Creating the instance of PopupMenu
-                PopupMenu popup = new PopupMenu(UserProfileActivity.this, imageButton1);
+                PopupMenu popup = new PopupMenu(UserProfileActivity.this, imageButton);
                 //Inflating the Popup using xml file
                 popup.getMenuInflater().inflate(R.menu.left_menu, popup.getMenu());
 
@@ -101,18 +86,6 @@ public class UserProfileActivity extends AppCompatActivity implements Navigation
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
-        switch (menuitem.getItemId()) {
-            case R.id.vac_dic:
-                Intent intent = new Intent(UserProfileActivity.this, VaccineInfo.class);
-                startActivity(intent);
-                break;
-        }
-
-        return true;
     }
 
 }

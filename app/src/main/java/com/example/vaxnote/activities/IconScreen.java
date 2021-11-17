@@ -27,6 +27,7 @@ public class IconScreen extends AppCompatActivity {
         image = findViewById(R.id.imageView);
 
 
+
         new Handler().postDelayed(() -> {
             if(SharedPrefManager.getInstance(this).isSignedIn()){
                 startActivity(new Intent(this,MainActivity.class));

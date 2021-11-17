@@ -19,5 +19,24 @@
     <string name="mainicon">mainicon</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="add_details_of_the_entire_family">Add Details of the Entire Family</string>
+    <string name="textview">TextView</string>
+    <string name="next">Next</string>
+    <string name="family">family</string>
+    <string name="first_page_info">Enter the entire Family‘s Vaccine  information under one app</string>
+    <string name="user">User</string>
+    <string name="dob_dd_mm_yyyy">DOB : DD/MM/YYYY</string>
+    <string name="future_vaccine_schedule">Future Vaccine Schedule</string>
+    <string name="age_group_19_60">Age Group : 19 - 60</string>
+    <string name="emailaddress_gmail_com">emailaddress@gmail.com</string>
+    <string name="_2_abc_apartment_def_road_andheri_mumbai">2, ABC Apartment, DEF Road, Andheri, Mumbai</string>
+    <string name="past_vaccine_record">Past Vaccine Record</string>
+    <string name="next_dosage">Next Dosage:</string>
+    <string name="record">+Record</string>
+    <string name="person_1_vaccine_a_n_date_dd_mm_yy">Person 1- Vaccine A \n Date: DD/MM/YY</string>
+    <string name="edit">edit</string>
+    <string name="user_photo">user_photo</string>
+    <string name="menu">Menu</string>
+    <string name="three_dot">three_dot</string>
 
 </resources>
