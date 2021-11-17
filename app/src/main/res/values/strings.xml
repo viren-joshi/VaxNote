@@ -38,5 +38,9 @@
     <string name="user_photo">user_photo</string>
     <string name="menu">Menu</string>
     <string name="three_dot">three_dot</string>
+    <string name="settings">Settings</string>
+    <string name="edit_personal_info">Edit Personal Info</string>
+    <string name="notifications_reminders"><![CDATA[Notifications & Reminders]]></string>
+    <string name="logout">Logout</string>
 
 </resources>
