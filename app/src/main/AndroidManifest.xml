@@ -14,9 +14,33 @@
         android:theme="@style/Theme.VaxNote"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activities.Abt_Activity"
-            android:label=""
+            android:name=".activities.Future_record"
             android:exported="false" />
+        <activity
+            android:name=".activities.Past_record"
+            android:exported="false" />
+        <activity
+            android:name=".activities.vac_record"
+            android:exported="false" />
+        <activity
+            android:name=".activities.new_record"
+            android:exported="false" />
+        <activity
+            android:name=".activities.third_page"
+            android:exported="false" />
+        <activity
+            android:name=".activities.second_page"
+            android:exported="false" />
+        <activity
+            android:name=".activities.first_page"
+            android:exported="false" />
+        <activity
+            android:name=".activities.newUser"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Abt_Activity"
+            android:exported="false"
+            android:label="" />
         <activity
             android:name=".activities.SettingActivity"
             android:exported="false"

@@ -42,5 +42,11 @@
     <string name="edit_personal_info">Edit Personal Info</string>
     <string name="notifications_reminders"><![CDATA[Notifications & Reminders]]></string>
     <string name="logout">Logout</string>
+    <string name="dob">DOB</string>
+    <string name="address">Address</string>
+    <string name="Continue">continue</string>
+    <string name="reminders_notifications"><![CDATA[Reminders & Notifications]]></string>
+    <string name="get_notified_before_every_vaccine_due_date">Get notified before every vaccine due date</string>
+    <string name="third">third</string>
 
 </resources>
