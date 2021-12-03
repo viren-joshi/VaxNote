@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#F4D08F</color>
-    <color name="purple_500">#E9A320</color>
-    <color name="purple_700">#F4D08F</color>
+    <color name="purple_500">#FBA812</color>
+    <color name="purple_700">#FAEACE</color>
     <color name="white">#FFFFFFFF</color>
     <color name="statusbar_yellow">#F4D08F</color>
     <color name="teal_200">#F4D08F</color>
     <color name="teal_500">#F4D08F</color>
     <color name="teal_700">#F4D08F</color>
     <color name="black">#F4D08F</color>
+    <color name="hintColor">#757575</color>
 </resources>

@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.PastRecordActivity">
+    tools:context=".activities.FutureVaccineSchedule">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/pastVaccineToolbar"
+        android:id="@+id/futureVaccineToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/purple_500"
@@ -17,7 +17,7 @@
         app:title="@string/vaxNote" />
 
     <ListView
-        android:id="@+id/pastVaccineListView"
+        android:id="@+id/futureVaccineListView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/whitebutton"
@@ -28,5 +28,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pastVaccineToolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/futureVaccineToolbar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
