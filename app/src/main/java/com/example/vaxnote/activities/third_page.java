@@ -32,7 +32,6 @@ public class third_page extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(third_page.this,SignUpActivity.class);
                 startActivity(i);
-                finish();
             }
         });
     }
