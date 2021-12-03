@@ -4,78 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.newUser">
+    tools:context=".activities.NewUserActivity">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="72dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/newUserToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="506dp"
+        android:background="@color/purple_500"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_account_circle_24"
-        android:contentDescription="@string/user" />
+        app:title="@string/vaxNote" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="211dp"
+        android:id="@+id/nameofPerson"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/whitebutton"
+        android:backgroundTint="@color/purple_200"
         android:ems="10"
         android:hint="@string/full_name"
-        android:inputType="textPersonName"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        android:importantForAutofill="no" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="211dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="@string/dob"
-        android:inputType="textPersonName"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-        android:importantForAutofill="no" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="@string/address"
-        android:hintTextColor="#757575"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:paddingStart="10dp"
+        android:paddingStart="20dp"
         android:paddingEnd="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
+        android:textColorHint="@color/hintColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newUserToolbar"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/dobUser"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/whitebutton"
+        android:backgroundTint="@color/purple_200"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:hint="Date of Birth"
+        android:importantForAutofill="no"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
+        android:textColor="#000000"
+        android:textColorHint="@color/hintColor"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/nameofPerson"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintStart_toStartOf="@+id/nameofPerson"
+        app:layout_constraintTop_toBottomOf="@+id/nameofPerson" />
+
+    <EditText
+        android:id="@+id/addressUser"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/whitebutton"
+        android:backgroundTint="@color/purple_200"
+        android:ems="10"
+        android:hint="@string/address"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
+        android:textColorHint="@color/hintColor"
+        app:layout_constraintEnd_toEndOf="@+id/dobUser"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dobUser"
+        app:layout_constraintTop_toBottomOf="@+id/dobUser" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/continueButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#FBA812"
+        android:backgroundTintMode="add"
         android:text="@string/Continue"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+        app:layout_constraintTop_toBottomOf="@+id/addressUser"
         tools:ignore="TextContrastCheck" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

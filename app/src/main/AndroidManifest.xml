@@ -6,25 +6,30 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".classes.VaccineNotificationHandler"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/vaxNote"
         android:roundIcon="@drawable/appicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.VaxNote"
+
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activities.Future_record"
-            android:exported="false" />
+            android:name=".activities.FutureVaccineSchedule"
+            android:exported="false"
+            android:parentActivityName=".activities.UserProfileDrawer"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".activities.Past_record"
-            android:exported="false" />
+            android:name=".activities.PastRecordActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.UserProfileDrawer"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".activities.vac_record"
-            android:exported="false" />
-        <activity
-            android:name=".activities.new_record"
-            android:exported="false" />
+            android:name=".activities.VaccineRecord"
+            android:exported="false"
+            android:parentActivityName=".activities.PastRecordActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".activities.third_page"
             android:exported="false" />
@@ -35,14 +40,7 @@
             android:name=".activities.first_page"
             android:exported="false" />
         <activity
-            android:name=".activities.newUser"
-            android:exported="false" />
-        <activity
-            android:name=".activities.Abt_Activity"
-            android:exported="false"
-            android:label="" />
-        <activity
-            android:name=".activities.SettingActivity"
+            android:name=".activities.NewUserActivity"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
@@ -50,18 +48,20 @@
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".activities.UserProfileActivity"
+            android:name=".activities.MainMenuActivity"
             android:exported="true"
             android:label=""
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".activities.VaccineInfo"
-            android:exported="true"
-            android:label="Vaccine Dictionary" />
-        <activity
             android:name=".activities.IconScreen"
             android:exported="true"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.SignInActivity"
             android:exported="true"
@@ -71,16 +71,9 @@
             android:exported="false"
             android:label="@string/SignUpActivity" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.UserProfileDrawer"
             android:exported="true"
-            android:label="@string/MainActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.vaxnote.classes;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -8,7 +9,9 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.example.vaxnote.Constants;
-import com.example.vaxnote.activities.MainActivity;
+import com.example.vaxnote.activities.MainMenuActivity;
+import com.example.vaxnote.activities.NewUserActivity;
+import com.example.vaxnote.activities.UserProfileDrawer;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,8 +37,9 @@ public class UserAuthentication{
                         result = jsonObject.getString("message");
                         Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
                         if(Objects.equals(result, "Sign Up Successful")){
-                            Intent intent = new Intent(context, MainActivity.class);
+                            Intent intent = new Intent(context, NewUserActivity.class);
                             context.startActivity(intent);
+                            ((Activity)context).finish();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -70,8 +74,9 @@ public class UserAuthentication{
                                     jsonObject.getString("userName"),
                                     jsonObject.getString("userEmail")
                             );
-                            Intent intent = new Intent(context,MainActivity.class);
+                            Intent intent = new Intent(context, MainMenuActivity.class);
                             context.startActivity(intent);
+                            ((Activity)context).finish();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/newadd"
-            android:checkable="false"
-            android:title="New Person's Record" />
+    <item
+        android:id="@+id/newadd"
+        android:checkable="false"
+        android:title="New Person's Record" />
 
-        <item
-            android:id="@+id/remove"
-            android:checkable="false"
-            android:icon="@drawable/icon_vac_dic"
-            android:title="Remove Person's Record" />
-
-        <item
-            android:id="@+id/logout"
-            android:checkable="false"
-            android:icon="@drawable/icon_set"
-            android:title="Logout" />
-
-
-    </group>
+    <item
+        android:id="@+id/logout"
+        android:checkable="false"
+        android:icon="@drawable/icon_set"
+        android:title="Logout" />
 
 </menu>

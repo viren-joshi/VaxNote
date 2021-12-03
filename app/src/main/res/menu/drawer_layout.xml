@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/home"
+            android:title="Home" />
+        <item
+            android:id="@+id/userProfile"
+            android:icon="@drawable/account_img"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/vac_dic"
+            android:icon="@drawable/icon_vac_dic"
+            android:title="Vaccine Dictionary" />
+
+        <item
+            android:id="@+id/abt_us"
+            android:icon="@drawable/about_us"
+            android:title="About us" />
+
+
+    </group>
+</menu>

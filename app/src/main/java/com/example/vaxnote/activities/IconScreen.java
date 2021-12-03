@@ -30,13 +30,12 @@ public class IconScreen extends AppCompatActivity {
 
         new Handler().postDelayed(() -> {
             if(SharedPrefManager.getInstance(this).isSignedIn()){
-                startActivity(new Intent(this,MainActivity.class));
+                startActivity(new Intent(this,MainMenuActivity.class));
             }
             else{
                 startActivity(new Intent(this,SignInActivity.class));
             }
             finish();
         },splashscreen);
-
     }
 }
