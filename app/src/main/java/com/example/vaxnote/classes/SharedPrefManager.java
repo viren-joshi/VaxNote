@@ -14,7 +14,6 @@ public class SharedPrefManager {
     private static Context ctx;
 
     private static final String SHARED_PREF_NAME = "MySharedPref";
-    private static final String KEY_ID = "userId";
     private static final String KEY_NAME = "userName";
     private static final String KEY_EMAIL = "userEmail";
 
@@ -29,10 +28,9 @@ public class SharedPrefManager {
         return instance;
     }
 
-    public void userSignIn(int userId, String userName, String userEmail){
+    public void userSignIn(String userName, String userEmail){
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(KEY_ID,userId);
         editor.putString(KEY_NAME,userName);
         editor.putString(KEY_EMAIL,userEmail);
         editor.apply();

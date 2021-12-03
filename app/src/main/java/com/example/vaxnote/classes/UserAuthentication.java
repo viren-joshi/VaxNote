@@ -32,11 +32,13 @@ public class UserAuthentication{
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.URL_SIGNUP,
                 response -> {
+                    Log.d("VaccineSIGNUP",response);
                     try {
                         JSONObject jsonObject = new JSONObject(response);
                         result = jsonObject.getString("message");
                         Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
                         if(Objects.equals(result, "Sign Up Successful")){
+                            SharedPrefManager.getInstance(context).userSignIn(userName,userSignUpEmail);
                             Intent intent = new Intent(context, NewUserActivity.class);
                             context.startActivity(intent);
                             ((Activity)context).finish();
@@ -70,7 +72,7 @@ public class UserAuthentication{
                         result = jsonObject.getString("message");
                         Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
                         if(Objects.equals(result,"Sign In Successful")) {
-                            SharedPrefManager.getInstance(context).userSignIn(jsonObject.getInt("userId"),
+                            SharedPrefManager.getInstance(context).userSignIn(
                                     jsonObject.getString("userName"),
                                     jsonObject.getString("userEmail")
                             );
