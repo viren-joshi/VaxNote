@@ -39,7 +39,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-//TODO: (In DB/PHP) Create function that gives all past vaccines
+
 
 public class PastRecordActivity extends AppCompatActivity {
     ListView listView;

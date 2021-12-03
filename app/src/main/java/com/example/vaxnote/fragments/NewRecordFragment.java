@@ -83,7 +83,6 @@ public class NewRecordFragment extends Fragment {
         doseNo = getView().findViewById(R.id.numberDose);
 
         //Setting the text of all Views
-        //TODO: set the text of all views here (via Intent Extras or diretly the variables)
         String userName = "Name : " + name,
                 vaccineName = "Vaccine : " + vaccine,
                 dose = "Dose No : " + doses;
@@ -121,7 +120,6 @@ public class NewRecordFragment extends Fragment {
         saveRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Connect to DB to add the record here
                 loadingDialog = new LoadingDialog(getActivity());
                 loadingDialog.startLoadingDialog();
                 addNewVaccineRecord(SharedPrefManager.getInstance(getContext()).getEmail(),name,vaccine,doses,setDate);

@@ -24,10 +24,7 @@ import com.example.vaxnote.classes.LocalInfo;
 import java.util.ArrayList;
 import java.util.Objects;
 
-/*
- TODO: (In DB/PHP) Create function that gives all past vaccines
- TODO: (In DB/PHP) Create function that deletes vaccine records
-*/
+
 
 public class VaccineRecord extends AppCompatActivity {
     Toolbar toolbar;
@@ -114,7 +111,6 @@ public class VaccineRecord extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //TODO: Call the db and delete the record
                         Toast.makeText(VaccineRecord.this, "Deleted", Toast.LENGTH_SHORT).show();
                     }
                 }
