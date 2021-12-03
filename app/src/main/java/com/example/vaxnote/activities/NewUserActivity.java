@@ -1,26 +1,23 @@
 package com.example.vaxnote.activities;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.vaxnote.Constants;
 import com.example.vaxnote.R;
@@ -66,82 +63,66 @@ public class NewUserActivity extends AppCompatActivity {
 
         continueButton = findViewById(R.id.continueButton);
 
-        dob.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        NewUserActivity.this, android.R.style.Widget_DeviceDefault,
-                        dateSetListener,
-                        year,month,day);
-                datePickerDialog.show();
-            }
+        dob.setOnClickListener(view -> {
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    NewUserActivity.this, android.R.style.Widget_DeviceDefault,
+                    dateSetListener,
+                    year,month,day);
+            datePickerDialog.show();
         });
 
-        dateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month++;
-                userDOB = year + "/" + month +"/" + day;
-                Log.d("Date",userDOB);
-                dob.setText(userDOB);
-                setDate = year + "-" + month + "-" + day;
-            }
+        dateSetListener = (datePicker, year, month, day) -> {
+            month++;
+            userDOB = year + "/" + month +"/" + day;
+            Log.d("Date",userDOB);
+            dob.setText(userDOB);
+            setDate = year + "-" + month + "-" + day;
         };
 
-        continueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                name = userName.getText().toString();
-                address = userAddress.getText().toString();
-                loadingDialog = new LoadingDialog(NewUserActivity.this);
-                loadingDialog.startLoadingDialog();
+        continueButton.setOnClickListener(view -> {
+            name = userName.getText().toString();
+            address = userAddress.getText().toString();
+            loadingDialog = new LoadingDialog(NewUserActivity.this);
+            loadingDialog.startLoadingDialog();
 //                Toast.makeText(NewUserActivity.this, name + " " + address, Toast.LENGTH_SHORT).show();
-                addNewPerson(SharedPrefManager.getInstance(NewUserActivity.this).getEmail(),name,setDate,address);
-            }
+            addNewPerson(SharedPrefManager.getInstance(NewUserActivity.this).getEmail(),name,setDate,address);
         });
     }
     public void addNewPerson(String email,String userName, String dob,String address){
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 Constants.URL_NEWPERSONPROFILE,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            Log.d("addNewPerson",response);
-                            JSONObject jsonObject = new JSONObject(response);
-                            result = jsonObject.getString("message");
-                            if(Objects.equals(result, "Successful")){
-                                loadingDialog.dissmissLoadingDialog();
-                                LocalInfo.getInstance(NewUserActivity.this).syncVariable();
-                                Toast.makeText(NewUserActivity.this, "New Person Added!!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(NewUserActivity.this,MainMenuActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                            else{
-                                Toast.makeText(NewUserActivity.this, "Error! New Person not Added", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(NewUserActivity.this,MainMenuActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                response -> {
+                    try {
+                        Log.d("addNewPerson",response);
+                        JSONObject jsonObject = new JSONObject(response);
+                        result = jsonObject.getString("message");
+                        if(Objects.equals(result, "Successful")){
+                            loadingDialog.dissmissLoadingDialog();
+                            LocalInfo.getInstance(NewUserActivity.this).syncVariable();
+                            Toast.makeText(NewUserActivity.this, "New Person Added!!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(NewUserActivity.this,MainMenuActivity.class);
+                            startActivity(intent);
                         }
+                        else{
+                            Toast.makeText(NewUserActivity.this, "Error! New Person not Added", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(NewUserActivity.this,MainMenuActivity.class);
+                            startActivity(intent);
+                        }
+                        finish();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+                error -> {
 
-                    }
                 }){
-            @Nullable
+            @NonNull
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();

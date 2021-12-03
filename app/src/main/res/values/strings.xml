@@ -50,7 +50,6 @@
     <string name="third">third</string>
     <string name="Notifications">Notifications</string>
     <string name="AboutUsStringResource">This is an android application that is will save your vaccine information and will also give you reminders for your next dose!</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

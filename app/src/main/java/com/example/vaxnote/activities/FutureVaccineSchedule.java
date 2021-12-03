@@ -1,21 +1,18 @@
 package com.example.vaxnote.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.vaxnote.R;
 import com.example.vaxnote.classes.LocalInfo;
 import com.example.vaxnote.classes.NotificationAdapter;
-import com.example.vaxnote.fragments.NewRecordFragment;
 
 import java.util.ArrayList;
 
@@ -47,25 +44,22 @@ public class FutureVaccineSchedule extends AppCompatActivity {
 
         if(arr == null){
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-            arr.add(new ArrayList<String>());
+            arr.add(new ArrayList<>());
             arr.get(0).add("Error");
             arr.get(0).add("Error");
         }
         NotificationAdapter notificationAdapter = new NotificationAdapter(this,R.layout.notifiation_layout,arr);
         listView.setAdapter(notificationAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int viewPosition, long l) {
-                ArrayList<String> Notification = new ArrayList<String>();
-                Notification = info.getPersonNotifs(position).get(viewPosition);
-                Intent i = new Intent(FutureVaccineSchedule.this,UserProfileDrawer.class);
-                i.putExtra("label","NewRecord");
-                i.putExtra("name", Notification.get(0));
-                i.putExtra("vaccine", Notification.get(1));
-                i.putExtra("doses", Notification.get(2));
-                startActivity(i);
-            }
+        listView.setOnItemClickListener((adapterView, view, viewPosition, l) -> {
+            ArrayList<String> Notification = new ArrayList<String>();
+            Notification = info.getPersonNotifs(position).get(viewPosition);
+            Intent i = new Intent(FutureVaccineSchedule.this,UserProfileDrawer.class);
+            i.putExtra("label","NewRecord");
+            i.putExtra("name", Notification.get(0));
+            i.putExtra("vaccine", Notification.get(1));
+            i.putExtra("doses", Notification.get(2));
+            startActivity(i);
         });
     }
 

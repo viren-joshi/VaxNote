@@ -27,13 +27,13 @@ public class IconScreen extends AppCompatActivity {
         image = findViewById(R.id.imageView);
 
 
-
         new Handler().postDelayed(() -> {
             if(SharedPrefManager.getInstance(this).isSignedIn()){
                 startActivity(new Intent(this,MainMenuActivity.class));
+                finish();
             }
             else{
-                startActivity(new Intent(this,SignInActivity.class));
+                startActivity(new Intent(this,first_page.class));
             }
             finish();
         },splashscreen);

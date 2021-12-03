@@ -112,118 +112,115 @@ public class MainMenuActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 Constants.URL_GETUSERNOTIFICATION,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            Log.d("HelloWorld2", response);
-                            JSONObject jsonObject = new JSONObject(response);
-                            result = jsonObject.getString("message");
-                            Log.d("helloworld2", result);
-                            if (result.equals("Successful")) {
-                                JSONArray jsonArray = jsonObject.getJSONArray("child");
-                                ArrayList<ArrayList<String>> result_child = new ArrayList<ArrayList<String>>();
-                                JSONObject array;
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    String s = jsonArray.getString(i);
-                                    array = new JSONObject(s);
-                                    result_child.add(new ArrayList<String>());
+                response -> {
+                    try {
+                        Log.d("HelloWorld2", response);
+                        JSONObject jsonObject = new JSONObject(response);
+                        result = jsonObject.getString("message");
+                        Log.d("helloworld2", result);
+                        if (result.equals("Successful")) {
+                            JSONArray jsonArray = jsonObject.getJSONArray("child");
+                            ArrayList<ArrayList<String>> result_child = new ArrayList<ArrayList<String>>();
+                            JSONObject array;
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                String s = jsonArray.getString(i);
+                                array = new JSONObject(s);
+                                result_child.add(new ArrayList<String>());
 
-                                    result_child.get(i).add(array.getString("email"));
-                                    result_child.get(i).add(array.getString("name"));
-                                    result_child.get(i).add(array.getString("vaccine"));
-                                    result_child.get(i).add(array.getString("child_notifs"));
-                                    result_child.get(i).add(array.getString("doses"));
-                                }
-                                jsonArray = jsonObject.getJSONArray("teen_adult");
-                                ArrayList<ArrayList<String>> result_teen_adult = new ArrayList<ArrayList<String>>();
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    String s = jsonArray.getString(i);
-                                    array = new JSONObject(s);
-                                    result_teen_adult.add(new ArrayList<String>());
+                                result_child.get(i).add(array.getString("email"));
+                                result_child.get(i).add(array.getString("name"));
+                                result_child.get(i).add(array.getString("vaccine"));
+                                result_child.get(i).add(array.getString("child_notifs"));
+                                result_child.get(i).add(array.getString("doses"));
+                            }
+                            jsonArray = jsonObject.getJSONArray("teen_adult");
+                            ArrayList<ArrayList<String>> result_teen_adult = new ArrayList<ArrayList<String>>();
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                String s = jsonArray.getString(i);
+                                array = new JSONObject(s);
+                                result_teen_adult.add(new ArrayList<String>());
 
-                                    result_teen_adult.get(i).add(array.getString("email"));
-                                    result_teen_adult.get(i).add(array.getString("name"));
-                                    result_teen_adult.get(i).add(array.getString("vaccine"));
-                                    result_teen_adult.get(i).add(array.getString("teen_adult_notifs"));
-                                    result_teen_adult.get(i).add(array.getString("doses"));
-                                }
-                                LocalInfo instance = LocalInfo.getInstance(MainMenuActivity.this);
-                                instance.setChildNotifs(result_child);
-                                instance.setTeenAdultNotifs(result_teen_adult);
-                                i++;
-                                if (i == LocalInfo.getInstance(MainMenuActivity.this).pList.length) {
-                                    LocalInfo info = new LocalInfo(MainMenuActivity.this);
-                                    list = LocalInfo.getInstance(MainMenuActivity.this).pList; //Getting the list of people
-                                    for(int j=0;j<list.length;j++){
-                                        if(info.getPersonNotifs(j).get(0) != null){
-                                            notificationsList.add(instance.getPersonNotifs(j).get(0));
-                                            if(info.getPersonNotifs(j).get(1) != null) {
-                                                notificationsList.add(instance.getPersonNotifs(j).get(1));
-                                            }
+                                result_teen_adult.get(i).add(array.getString("email"));
+                                result_teen_adult.get(i).add(array.getString("name"));
+                                result_teen_adult.get(i).add(array.getString("vaccine"));
+                                result_teen_adult.get(i).add(array.getString("teen_adult_notifs"));
+                                result_teen_adult.get(i).add(array.getString("doses"));
+                            }
+                            LocalInfo instance = LocalInfo.getInstance(MainMenuActivity.this);
+                            instance.setChildNotifs(result_child);
+                            instance.setTeenAdultNotifs(result_teen_adult);
+                            i++;
+                            if (i == LocalInfo.getInstance(MainMenuActivity.this).pList.length) {
+                                LocalInfo info = new LocalInfo(MainMenuActivity.this);
+                                list = LocalInfo.getInstance(MainMenuActivity.this).pList; //Getting the list of people
+                                for(int j=0;j<list.length;j++){
+                                    if(info.getPersonNotifs(j).get(0) != null){
+                                        notificationsList.add(instance.getPersonNotifs(j).get(0));
+                                        if(info.getPersonNotifs(j).get(1) != null) {
+                                            notificationsList.add(instance.getPersonNotifs(j).get(1));
                                         }
                                     }
+                                }
 //                                    notificationsList = info.getNotifs(); //Getting their respective notification
 
-                                    if (notificationsList == null) {
-                                        Toast.makeText(MainMenuActivity.this, "An error occured", Toast.LENGTH_SHORT).show();
-                                        notificationsList = new ArrayList<ArrayList<String>>();
-                                        notificationsList.add(new ArrayList<String>());
-                                        notificationsList.get(0).add("No Notifications to Show");
-                                        notificationsList.get(0).add("N/A");
-                                        notificationsList.get(0).add("N/A");
-                                    }
-
-                                    allNotification = findViewById(R.id.allNotificationListView);
-                                    NotificationAdapter notificationAdapter = new NotificationAdapter(MainMenuActivity.this, R.layout.notifiation_layout, notificationsList);
-                                    allNotification.setAdapter(notificationAdapter);
-
-
-                                    if (list == null) {
-                                        Toast.makeText(MainMenuActivity.this, "ArrayListNull", Toast.LENGTH_SHORT).show();
-                                        names = new String[]{"Error!"};
-
-                                    } else {
-                                        names = new String[list.length];
-                                        int i = 0;
-                                        for (String[] a : list) {
-                                            names[i] = a[1];
-                                            i++;
-                                        }
-                                    }
-                                    ArrayAdapter arrayAdapter = new ArrayAdapter(MainMenuActivity.this, android.R.layout.simple_list_item_1, names);
-                                    listPeople.setAdapter(arrayAdapter);
-
-                                    loadingDialog.dissmissLoadingDialog();
-
-
-                                    listPeople.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                        @Override
-                                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                                            Intent intent = new Intent(MainMenuActivity.this, UserProfileDrawer.class);
-                                            intent.putExtra("personPosition", position);
-                                            startActivity(intent);
-                                        }
-                                    });
-
-                                    allNotification.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                        @Override
-                                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                                            ArrayList<String> notification = notificationsList.get(position);
-                                            Intent intent = new Intent(MainMenuActivity.this,UserProfileDrawer.class);
-                                            intent.putExtra("label","NewRecord");
-                                            intent.putExtra("name",notification.get(0));
-                                            intent.putExtra("vaccine",notification.get(1));
-                                            intent.putExtra("doses",notification.get(2));
-                                            startActivity(intent);
-                                        }
-                                    });
+                                if (notificationsList == null) {
+                                    Toast.makeText(MainMenuActivity.this, "An error occured", Toast.LENGTH_SHORT).show();
+                                    notificationsList = new ArrayList<ArrayList<String>>();
+                                    notificationsList.add(new ArrayList<String>());
+                                    notificationsList.get(0).add("No Notifications to Show");
+                                    notificationsList.get(0).add("N/A");
+                                    notificationsList.get(0).add("N/A");
                                 }
 
+                                allNotification = findViewById(R.id.allNotificationListView);
+                                NotificationAdapter notificationAdapter = new NotificationAdapter(MainMenuActivity.this, R.layout.notifiation_layout, notificationsList);
+                                allNotification.setAdapter(notificationAdapter);
+
+
+                                if (list == null) {
+                                    Toast.makeText(MainMenuActivity.this, "ArrayListNull", Toast.LENGTH_SHORT).show();
+                                    names = new String[]{"Error!"};
+
+                                } else {
+                                    names = new String[list.length];
+                                    int i = 0;
+                                    for (String[] a : list) {
+                                        names[i] = a[1];
+                                        i++;
+                                    }
+                                }
+                                ArrayAdapter arrayAdapter = new ArrayAdapter(MainMenuActivity.this, android.R.layout.simple_list_item_1, names);
+                                listPeople.setAdapter(arrayAdapter);
+
+                                loadingDialog.dissmissLoadingDialog();
+
+
+                                listPeople.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                                        Intent intent = new Intent(MainMenuActivity.this, UserProfileDrawer.class);
+                                        intent.putExtra("personPosition", position);
+                                        startActivity(intent);
+                                    }
+                                });
+
+                                allNotification.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                                        ArrayList<String> notification = notificationsList.get(position);
+                                        Intent intent = new Intent(MainMenuActivity.this,UserProfileDrawer.class);
+                                        intent.putExtra("label","NewRecord");
+                                        intent.putExtra("name",notification.get(0));
+                                        intent.putExtra("vaccine",notification.get(1));
+                                        intent.putExtra("doses",notification.get(2));
+                                        startActivity(intent);
+                                    }
+                                });
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+
                         }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
                 },
                 new Response.ErrorListener() {
@@ -254,7 +251,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        JSONObject jsonObject = null;
+                        JSONObject jsonObject;
                         try {
                             Log.d("HelloWorld", response);
                             jsonObject = new JSONObject(response);
