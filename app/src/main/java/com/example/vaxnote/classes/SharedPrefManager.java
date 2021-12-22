@@ -7,8 +7,6 @@ import android.content.SharedPreferences;
 
 import com.example.vaxnote.activities.SignInActivity;
 
-import java.util.ArrayList;
-
 public class SharedPrefManager {
     private static SharedPrefManager instance;
     private static Context ctx;

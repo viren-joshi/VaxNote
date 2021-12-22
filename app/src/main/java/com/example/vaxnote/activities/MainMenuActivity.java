@@ -1,11 +1,5 @@
 package com.example.vaxnote.activities;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-
 import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -14,20 +8,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.vaxnote.Constants;
 import com.example.vaxnote.R;
@@ -54,7 +49,7 @@ public class MainMenuActivity extends AppCompatActivity {
     ListView allNotification, listPeople;
     String[] names;
     String[][] list;
-    ArrayList<ArrayList<String>> notificationsList = new ArrayList<ArrayList<String>>();
+    ArrayList<ArrayList<String>> notificationsList = new ArrayList<>();
     LoadingDialog loadingDialog;
     int i = 0;
     String result;
@@ -117,15 +112,15 @@ public class MainMenuActivity extends AppCompatActivity {
                         Log.d("HelloWorld2", response);
                         JSONObject jsonObject = new JSONObject(response);
                         result = jsonObject.getString("message");
-                        Log.d("helloworld2", result);
+                        Log.d("ResultMainMenuActivity", result);
                         if (result.equals("Successful")) {
                             JSONArray jsonArray = jsonObject.getJSONArray("child");
-                            ArrayList<ArrayList<String>> result_child = new ArrayList<ArrayList<String>>();
+                            ArrayList<ArrayList<String>> result_child = new ArrayList<>();
                             JSONObject array;
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 String s = jsonArray.getString(i);
                                 array = new JSONObject(s);
-                                result_child.add(new ArrayList<String>());
+                                result_child.add(new ArrayList<>());
 
                                 result_child.get(i).add(array.getString("email"));
                                 result_child.get(i).add(array.getString("name"));
@@ -134,11 +129,11 @@ public class MainMenuActivity extends AppCompatActivity {
                                 result_child.get(i).add(array.getString("doses"));
                             }
                             jsonArray = jsonObject.getJSONArray("teen_adult");
-                            ArrayList<ArrayList<String>> result_teen_adult = new ArrayList<ArrayList<String>>();
+                            ArrayList<ArrayList<String>> result_teen_adult = new ArrayList<>();
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 String s = jsonArray.getString(i);
                                 array = new JSONObject(s);
-                                result_teen_adult.add(new ArrayList<String>());
+                                result_teen_adult.add(new ArrayList<>());
 
                                 result_teen_adult.get(i).add(array.getString("email"));
                                 result_teen_adult.get(i).add(array.getString("name"));
@@ -164,9 +159,9 @@ public class MainMenuActivity extends AppCompatActivity {
 //                                    notificationsList = info.getNotifs(); //Getting their respective notification
 
                                 if (notificationsList == null) {
-                                    Toast.makeText(MainMenuActivity.this, "An error occured", Toast.LENGTH_SHORT).show();
-                                    notificationsList = new ArrayList<ArrayList<String>>();
-                                    notificationsList.add(new ArrayList<String>());
+                                    Toast.makeText(MainMenuActivity.this, "An error occurred", Toast.LENGTH_SHORT).show();
+                                    notificationsList = new ArrayList<>();
+                                    notificationsList.add(new ArrayList<>());
                                     notificationsList.get(0).add("No Notifications to Show");
                                     notificationsList.get(0).add("N/A");
                                     notificationsList.get(0).add("N/A");
@@ -195,26 +190,20 @@ public class MainMenuActivity extends AppCompatActivity {
                                 loadingDialog.dissmissLoadingDialog();
 
 
-                                listPeople.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                    @Override
-                                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                                        Intent intent = new Intent(MainMenuActivity.this, UserProfileDrawer.class);
-                                        intent.putExtra("personPosition", position);
-                                        startActivity(intent);
-                                    }
+                                listPeople.setOnItemClickListener((adapterView, view, position, l) -> {
+                                    Intent intent = new Intent(MainMenuActivity.this, UserProfileDrawer.class);
+                                    intent.putExtra("personPosition", position);
+                                    startActivity(intent);
                                 });
 
-                                allNotification.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                    @Override
-                                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                                        ArrayList<String> notification = notificationsList.get(position);
-                                        Intent intent = new Intent(MainMenuActivity.this,UserProfileDrawer.class);
-                                        intent.putExtra("label","NewRecord");
-                                        intent.putExtra("name",notification.get(0));
-                                        intent.putExtra("vaccine",notification.get(1));
-                                        intent.putExtra("doses",notification.get(2));
-                                        startActivity(intent);
-                                    }
+                                allNotification.setOnItemClickListener((adapterView, view, position, l) -> {
+                                    ArrayList<String> notification = notificationsList.get(position);
+                                    Intent intent = new Intent(MainMenuActivity.this,UserProfileDrawer.class);
+                                    intent.putExtra("label","NewRecord");
+                                    intent.putExtra("name",notification.get(0));
+                                    intent.putExtra("vaccine",notification.get(1));
+                                    intent.putExtra("doses",notification.get(2));
+                                    startActivity(intent);
                                 });
                             }
 
@@ -223,12 +212,7 @@ public class MainMenuActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                }
+                error -> error.printStackTrace()
         ) {
             @Nullable
             @Override
@@ -243,55 +227,43 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void getPeopleList(String email) {
-//        final LoadingDialog loadingDialog = new LoadingDialog((Activity) ctx);
-//        loadingDialog.startLoadingDialog();
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 Constants.URL_GETUSERPROFILES,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        JSONObject jsonObject;
-                        try {
-                            Log.d("HelloWorld", response);
-                            jsonObject = new JSONObject(response);
-                            result = jsonObject.getString("message");
-                            Log.d("ResultOfFunction", result);
-                            if (result.equals("Successful")) {
-//                                loadingDialog.dissmissDialog();
-                                Log.d("helloworld", "Called");
-                                JSONArray jsonArray = jsonObject.getJSONArray("userList");
-                                String[][] res = new String[jsonArray.length()][4];
-                                JSONObject array;
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    String s = jsonArray.getString(i);
-                                    array = new JSONObject(s);
-                                    res[i][0] = array.getString("email");
-                                    res[i][1] = array.getString("name");
-                                    res[i][2] = array.getString("dob");
-                                    res[i][3] = array.getString("address");
-                                }
-
-                                LocalInfo.getInstance(MainMenuActivity.this).setList(res);
-                                for (int i = 0; i < res.length; i++) {
-                                    getUserNotification(res[i][0], res[i][1]);
-                                }
-
-                            } else {
-                                //Do Something
-                                Toast.makeText(MainMenuActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                response -> {
+                    JSONObject jsonObject;
+                    try {
+                        Log.d("HelloWorld", response);
+                        jsonObject = new JSONObject(response);
+                        result = jsonObject.getString("message");
+                        Log.d("ResultOfFunction", result);
+                        if (result.equals("Successful")) {
+                            JSONArray jsonArray = jsonObject.getJSONArray("userList");
+                            String[][] res = new String[jsonArray.length()][4];
+                            JSONObject array;
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                String s = jsonArray.getString(i);
+                                array = new JSONObject(s);
+                                res[i][0] = array.getString("email");
+                                res[i][1] = array.getString("name");
+                                res[i][2] = array.getString("dob");
+                                res[i][3] = array.getString("address");
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+
+                            LocalInfo.getInstance(MainMenuActivity.this).setList(res);
+                            for (String[] re : res) {
+                                getUserNotification(re[0], re[1]);
+                            }
+
+                        } else {
+                            //Do Something
+                            Toast.makeText(MainMenuActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                         }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("getPeopleListError", error.getMessage());
-                    }
-                }) {
+                error -> Log.d("getPeopleListError", error.getMessage())) {
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {

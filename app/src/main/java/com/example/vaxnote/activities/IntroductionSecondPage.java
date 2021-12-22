@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.example.vaxnote.R;
 
-public class second_page extends AppCompatActivity {
+public class IntroductionSecondPage extends AppCompatActivity {
     Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class second_page extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(second_page.this,third_page.class);
+                Intent intent = new Intent(IntroductionSecondPage.this, IntroductionThirdPage.class);
                 startActivity(intent);
             }
         });

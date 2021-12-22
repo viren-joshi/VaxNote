@@ -33,7 +33,7 @@ public class IconScreen extends AppCompatActivity {
                 finish();
             }
             else{
-                startActivity(new Intent(this,first_page.class));
+                startActivity(new Intent(this, IntroductionFirstPage.class));
             }
             finish();
         },splashscreen);

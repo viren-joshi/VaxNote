@@ -33,13 +33,13 @@
             android:parentActivityName=".activities.PastRecordActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".activities.third_page"
+            android:name=".activities.IntroductionThirdPage"
             android:exported="false" />
         <activity
-            android:name=".activities.second_page"
+            android:name=".activities.IntroductionSecondPage"
             android:exported="false" />
         <activity
-            android:name=".activities.first_page"
+            android:name=".activities.IntroductionFirstPage"
             android:exported="false" />
         <activity
             android:name=".activities.NewUserActivity"
