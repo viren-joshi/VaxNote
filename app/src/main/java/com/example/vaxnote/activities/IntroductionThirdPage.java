@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.example.vaxnote.R;
 
-public class third_page extends AppCompatActivity {
+public class IntroductionThirdPage extends AppCompatActivity {
     Button SignIn,SignUp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class third_page extends AppCompatActivity {
         SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(third_page.this,SignInActivity.class);
+                Intent i = new Intent(IntroductionThirdPage.this,SignInActivity.class);
                 startActivity(i);
                 finish();
             }
@@ -30,7 +30,7 @@ public class third_page extends AppCompatActivity {
         SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(third_page.this,SignUpActivity.class);
+                Intent i = new Intent(IntroductionThirdPage.this,SignUpActivity.class);
                 startActivity(i);
             }
         });

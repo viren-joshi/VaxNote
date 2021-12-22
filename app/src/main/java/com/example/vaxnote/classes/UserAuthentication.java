@@ -11,7 +11,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.vaxnote.Constants;
 import com.example.vaxnote.activities.MainMenuActivity;
 import com.example.vaxnote.activities.NewUserActivity;
-import com.example.vaxnote.activities.UserProfileDrawer;
 
 import org.json.JSONException;
 import org.json.JSONObject;
